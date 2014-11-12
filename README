@@ -1,0 +1,43 @@
+GENERAL
+
+This package contains the D-FLAT Debugger in version 0.15, 
+
+The D-FLAT Debugger is a tool for visualization and inspection of 
+algorithms specified in D-FLAT. In particular, it features:
+- Visualization of the tree decomposition and itermediate 
+  results (item trees), interactive inspection of extension 
+  pointers, and representation of solution candidates.
+- Search for solution candidates and (auxiliary) items, including 
+  search by specifying regular expressions.
+- Debugging on basis of node types assigned to nodes in the item trees. 
+  With this, pruned item paths can be inspected, thereby easing to 
+  locate the point during the traversal of the decomposition where a 
+  solution candidate was discarded.
+
+More details can be found at:      http://www.dbai.tuwien.ac.at/proj/dflat/debugger/
+The D-FLAT system is available at: http://www.dbai.tuwien.ac.at/proj/dflat/system/
+
+COMPILING
+
+There is no need to compile. However, the tool requires
+- Python 2, and
+- GTK+ >= 2.24.
+
+USAGE
+
+In order to run the debugger, D-FLAT has to provide machine-readable debugging 
+information. This is achieved by calling D-FLAT with the parameter --output machine. 
+
+A typical debugger call is of the following format:
+
+./dflat --output machine -p problem.lp < instance.lp | python DflatDebugger.py
+
+In order to reuse the output of D-FLAT for several debugging sessions, one may dump the output to a file:
+
+./dflat --output machine -p problem.lp < instance.lp > dump.dbg
+python DflatDebugger.py < dump.dbg
+
+LICENSE
+
+The code is provided under the GNU GENERAL PUBLIC LICENSE,
+but it contains code (pyparsing.py), which is available under the MIT license.
